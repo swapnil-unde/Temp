@@ -1,0 +1,122 @@
+Your RAG implementation order
+1
+
+Problem statement analysis
+
+Identify users, documents, business requirements, constraints, and success KPIs.
+
+
+2
+
+LLM connection
+
+Connect your selected LLM and test basic generation.
+
+
+3
+
+Embedding model
+
+Generate compatible embeddings for documents and queries.
+
+
+4
+
+Vector database
+
+Set up persistent ChromaDB and similarity search.
+
+
+5
+
+Document ingestion
+
+Load PDFs, DOCX, TXT, or other required formats.
+
+
+6
+
+Chunking and indexing
+
+Split documents, preserve metadata, generate embeddings, and index chunks.
+
+
+7
+
+Retrieval pipeline
+
+Retrieve top-K relevant chunks and apply permission filters.
+
+
+8
+
+Prompt engineering and citations
+
+Generate grounded answers with source references and abstention.
+
+
+9
+
+Backend and UI
+
+Expose FastAPI endpoints and build a simple chat interface.
+
+
+10
+
+Security and guardrails
+
+Add authentication, RBAC, prompt-injection defenses, and data protection.
+
+
+11
+
+Logging and monitoring
+
+Track errors, latency, token usage, cost, retrieval, and cache metrics.
+
+
+12
+
+Caching and optimization
+
+Add embedding caching first; evaluate retrieval and answer caching.
+
+
+13
+
+Evaluation and HITL
+
+Test answer quality, citations, unanswerable questions, and human-review scenarios.
+
+
+14
+
+POC and final submission
+
+Prepare measured evidence, architecture alternatives, risk register, roadmap, and demo.
+
+
+
+Recommended stack for your hackathon
+Component	Recommended choice
+Language	Python
+Backend	FastAPI
+Vector DB	ChromaDB
+LLM	Available provider API or local model
+Embeddings	A model appropriate for your documents
+Document processing	PyMuPDF, python-docx, OCR if needed
+UI	Streamlit
+Testing	pytest + a golden question dataset
+Logging	Python structured logging
+Caching	Embedding cache first; Redis if needed
+Evaluation	RAGAS or DeepEval, plus custom tests
+
+How we will work with GitHub Copilot
+When the competition gives you a problem statement:
+1. Paste the problem statement into the AI architecture prompt we discussed.
+2. Identify the document sources, users, security constraints, and business KPIs.
+3. Finalize the architecture and identify any components that need to change.
+4. Give Copilot one implementation task at a time from the checklist.
+5. Run tests after every task.
+6. Demonstrate the working solution and capture evidence for the five core deliverables: D1, D2, D3, D4, and D5.
