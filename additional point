@@ -1,0 +1,50 @@
+Implement the following RAG enhancements incrementally in the existing Python project. Inspect the current codebase first and preserve its existing architecture.
+
+TASK 1 — HYBRID SEARCH
+- Implement dense vector retrieval and sparse BM25 retrieval as separate modules.
+- Merge results using Reciprocal Rank Fusion (RRF).
+- Deduplicate chunks and preserve document IDs, source metadata, permissions, and ranking details.
+- Enforce authorization before retrieved content reaches the LLM.
+- Add configuration for candidate counts and retrieval settings.
+- Test dense-only, BM25-only, and hybrid retrieval against a labeled dataset.
+
+TASK 2 — RERANKING
+- Add a configurable cross-encoder reranking interface.
+- Rerank hybrid-search candidates using the query and candidate text.
+- Return the best evidence with source metadata and scores.
+- Support model configuration, batching, timeouts, and controlled fallback behavior.
+- Evaluate ranking quality and end-to-end answer quality before and after reranking.
+
+TASK 3 — JUDGE MODEL
+- Implement a separate evaluation service for answer relevance, groundedness, citation correctness, and completeness.
+- Use structured, schema-validated outputs.
+- Separate evaluation from answer generation.
+- Support offline evaluation and optional asynchronous sampled evaluation.
+- Compare judge scores with human-reviewed examples.
+- Never use the judge as the sole authorization or security control.
+
+TASK 4 — PROMPT MANAGEMENT
+- Move prompts into version-controlled templates.
+- Record prompt ID, version, variables, purpose, and change description.
+- Support prompt version selection and rollback.
+- Log prompt versions with each request without exposing sensitive prompt data.
+- Create regression tests that compare prompt versions using the same golden dataset.
+- Do not promote a new prompt automatically if quality regresses.
+
+TASK 5 — LLM DRIFT MONITORING
+- Track model and provider version, prompt version, embedding version, corpus version, retrieval configuration, and evaluation results.
+- Establish baseline answer quality, retrieval quality, citation correctness, abstention rate, latency, and cost.
+- Implement scheduled golden-dataset regression tests.
+- Track rolling quality metrics and compare them with the baseline.
+- Add configurable alert thresholds and minimum sample sizes.
+- Record drift signals and support root-cause investigation.
+- Do not claim drift detection works until controlled regression tests demonstrate it.
+
+For every task:
+1. Explain the files to be created or modified.
+2. Implement only that task.
+3. Add unit and integration tests.
+4. Run the tests and report actual results.
+5. Document configuration and limitations.
+6. Preserve security controls and existing functionality.
+7. Do not fabricate evaluation scores or test results.
